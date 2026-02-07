@@ -1,0 +1,13 @@
+# Git
+.git
+.gitignore
+
+# Environment
+.env
+
+# System
+.DS_Store
+
+# Go
+bin/
+vendor/

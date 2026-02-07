@@ -1,25 +1,4 @@
-# 🔥 Ignis Go Boilerplate 🏗️
-
-Ignis is a production-ready **Go project template** designed to jumpstart your backend development. It provides a solid foundation with best practices, pre-configured tooling, and essential components, acting as a "batteries-included" starter kit for building robust RESTful services.
-
-Think of it as a modern, opinionated copy-paste-able base for your next Go project.
-
-## 🚀 Included Batteries
-
--   **Project Structure**: Follows Standard Go Project Layout.
--   **PostgreSQL Ready**: Pre-configured `pgx` driver and connection pooling.
--   **Type-Safe SQL**: `sqlc` setup for generating Go code from SQL queries.
--   **Dockerized**: Complete `Dockerfile` and `docker-compose.yml` for local development.
--   **Migrations**: Database migration support via `goose`.
--   **Configuration**: Simple env-var based config with `.env` file support.
--   **Graceful Shutdown**: Ready-to-use signal handling for safe termination.
--   **Health Checks**: Built-in `/healthz` endpoint.
--   **Package Calculator**: A dynamic tool to calculate the optimal distribution of items into different package sizes using HTMX.
--   **Calculation History**: Persistent storage for all your calculations with real-time UI updates.
-
-## 📦 Package Calculator
-
-The Ignis Boilerplate now includes a **Package Calculator** that demonstrates a full vertical slice of a feature: from a recursive optimization algorithm in the service layer to a dynamic HTMX-powered front-end.
+# 📦 Package Calculator
 
 ### Features
 - **Optimal Distribution**: Uses a recursive exact-match algorithm to find the perfect distribution.
@@ -29,11 +8,12 @@ The Ignis Boilerplate now includes a **Package Calculator** that demonstrates a 
 - **Testable**: Includes comprehensive unit tests, benchmark-ready algorithms, and E2E integration tests.
 
 ### How to Use
-1.  **Start the application**: Run `make run` or `go run cmd/main.go`.
-2.  **Navigate to the calculator**: Open your browser at `http://localhost:8080`.
-3.  **Enter Pack Sizes**: Provide comma-separated values (e.g., `23, 31, 53`).
-4.  **Enter Amount**: Specify the total number of items you need to pack (e.g., `500000`).
-5.  **Click Calculate**: See the results instantly!
+1.  **Start the database**: Run `make compose-up` (requires Docker) to start PostgreSQL and migrations.
+2.  **Start the application**: Run `make run` or `go run cmd/main.go`.
+3.  **Navigate to the calculator**: Open your browser at `http://localhost:8080`.
+4.  **Enter Pack Sizes**: Provide comma-separated values (e.g., `23, 31, 53`).
+5.  **Enter Amount**: Specify the total number of items you need to pack (e.g., `500000`).
+6.  **Click Calculate**: See the results instantly!
 
 ### Screenshot
 ![Package Calculator](./main_page.png)
@@ -70,8 +50,8 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/ioanzicu/ignis.git
-cd ignis
+git clone git@github.com:ioanzicu/package-calculator.git
+cd package-calculator
 ```
 
 ### 2. Configuration
@@ -81,9 +61,9 @@ The application uses environment variables for configuration.
 **Local Development**: Create a `.env` file in the root directory:
 
 ```env
-HTTP_HOST=localhost
+HTTP_HOST=127.0.0.1
 HTTP_PORT=8080
-PG_DSN=postgres://user:password@localhost:5432/dbname?sslmode=disable
+PG_DSN=postgres://postgres:postgres@127.0.0.1:5432/postgres?sslmode=disable
 ```
 
 **Docker**: Variables are automatically handled in `docker-compose.yml`.
