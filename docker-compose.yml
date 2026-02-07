@@ -10,11 +10,20 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+      migration:
+        condition: service_completed_successfully
     healthcheck:
       test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/healthz" ]
       interval: 5s
       timeout: 5s
       retries: 5
+
+  migration:
+    build: .
+    command: ./goose -dir migrations postgres "postgres://postgres:postgres@postgres:5432/postgres?sslmode=disable" up
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   postgres:
     image: postgres:18-alpine

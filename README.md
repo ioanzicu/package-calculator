@@ -131,4 +131,4 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-Built with [🔥 Ignis](https://github.com/ioanzicu/ignis) ❤️
+Built with [🔥 IgnisGo](https://github.com/ioanzicu/ignis) ❤️

@@ -66,7 +66,7 @@ docker-run: ## Run docker container
 
 .PHONY: compose-up
 compose-up: ## Start services with docker-compose
-	docker-compose up -d
+	docker-compose up -d --build
 
 .PHONY: compose-down
 compose-down: ## Stop services with docker-compose
